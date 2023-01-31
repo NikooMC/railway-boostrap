@@ -5,6 +5,7 @@ from pyngrok import conf, ngrok
 
 if __name__ == "__main__":
     subprocess.run(["curl", os.environ["SNAPSHOT"], "-o", "snapshot.tar.xz"])
+    os.mkdir("server")
     engine.init(quiet=True)
     os.chdir("server")
     subprocess.run(["tar", "xf", "../snapshot.tar.xz"])
