@@ -12,5 +12,5 @@ if __name__ == "__main__":
         prop = f.read()
     with open("server/server.properties", "w") as f:
         f.write(prop.replace("server-port=25565", f"server-port={os.environ['PORT']}"))
-    engine.log.run_command_live_output("cat server/server.")
+    engine.log.run_command_live_output("cat server/server.properties")
     engine.log.run_command_live_output("sh server/start.sh")
