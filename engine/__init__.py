@@ -42,7 +42,7 @@ def init(quiet=False):
     print("Running first time setup to initialize the server.")
 
     with open("server/start.sh", "w") as f:
-        f.write(f"#!/bin/bash\ncd server\n{'java/' + java_dir} -Xms400m -Xmx500m -jar  paper.jar -nogui")
+        f.write(f"#!/bin/bash\ncd server\n{'java/' + java_dir} -jar  paper.jar -nogui")
     os.system("chmod +x server/start.sh")
     log.run_command_live_output("server/start.sh")
     with open("server/eula.txt", "r") as f:
