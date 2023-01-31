@@ -3,7 +3,7 @@ import aiohttp
 # /builds/27/downloads/paper-1.19-27.jar
 
 
-async def get(version: str = "1.19"):
+async def get(version: str = "1.19.3"):
     async with aiohttp.ClientSession() as session:
         async with session.get(f"https://api.papermc.io/v2/projects/paper/versions/{version}") as response:
             r = await response.json()
