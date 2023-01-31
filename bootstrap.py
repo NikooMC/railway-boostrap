@@ -19,3 +19,8 @@ if __name__ == "__main__":
     print('Your server address is ' + ((str(url).split('"')[1::2])[0]).replace('tcp://', ''))
     os.chdir("..")
     engine.log.run_command_live_output("sh server/start.sh")
+    with open("server/eula.txt", "r") as f:
+        content = f.read()
+    with open("server/eula.txt", "w") as f:
+        f.write(content.replace("eula=false", "eula=true"))
+    engine.log.run_command_live_output("sh server/start.sh")
