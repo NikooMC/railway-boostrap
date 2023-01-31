@@ -45,17 +45,17 @@ def init(quiet=False):
         f.write(f"#!/bin/bash\ncd server\n{'java/' + java_dir} -jar  paper.jar -nogui")
     os.system("chmod +x server/start.sh")
     # log.run_command_live_output("server/start.sh")
-    with open("server/eula.txt", "r") as f:
-        content = f.read()
-    with open("server/eula.txt", "w") as f:
-        if not quiet:
-            if utils.is_affirmative(input("Do you accept Mojang's EULA? [y/N] ")) or quiet:
-                f.write(content.replace("eula=false", "eula=true"))
-            else:
-                print("Abort.")
-                sys.exit(1)
-        else:
-            f.write(content.replace("eula=false", "eula=true"))
+    # with open("server/eula.txt", "r") as f:
+    #     content = f.read()
+    # with open("server/eula.txt", "w") as f:
+    #     if not quiet:
+    #         if utils.is_affirmative(input("Do you accept Mojang's EULA? [y/N] ")) or quiet:
+    #             f.write(content.replace("eula=false", "eula=true"))
+    #         else:
+    #             print("Abort.")
+    #             sys.exit(1)
+    #     else:
+    #         f.write(content.replace("eula=false", "eula=true"))
     print(f"------------- OPENING SERVER ON LOCALHOST:{os.environ['PORT']} -------------")
 
 
