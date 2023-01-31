@@ -56,8 +56,10 @@ def init(quiet=False):
                 sys.exit(1)
         else:
             f.write(content.replace("eula=false", "eula=true"))
-    print("Starting server...")
-    log.run_command_live_output("server/start.sh")
+    with open("server/server.properties", "r") as f:
+        prop = f.read()
+    with open("server/server.properties", "w") as f:
+        f.write(prop.replace("query.port=25565", f"query.port={os.environ['PORT']}"))
 
 
 def backup(worlds: bool = True, plugins: bool = True, logs: bool = True, *, message: str):
