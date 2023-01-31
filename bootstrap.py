@@ -7,11 +7,7 @@ if __name__ == "__main__":
     subprocess.run(["curl", os.environ["SNAPSHOT"], "-o", "snapshot.tar.xz"])
     engine.init(quiet=True)
     os.chdir("server")
-    subprocess.run(["tar", "xf", "snapshot.tar.xz"])
-    with open("server/server.properties", "r") as f:
-        prop = f.read()
-    with open("server/server.properties", "w") as f:
-        f.write(prop)
+    subprocess.run(["tar", "xf", "../snapshot.tar.xz"])
     engine.log.run_command_live_output("cat server/server.properties")
     engine.log.run_command_live_output(f"ngrok authtoken {os.environ['NGROK']}")
     url = ngrok.connect(25565, 'tcp')
