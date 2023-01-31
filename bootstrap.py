@@ -14,7 +14,7 @@ if __name__ == "__main__":
     subprocess.run(["tar", "xf", "../snapshot.tar.xz"])
     engine.log.run_command_live_output("cat server/server.properties")
     engine.log.run_command_live_output(f"ngrok authtoken {os.environ['NGROK']}")
-    engine.log.run_command_live_output("killall ngrok")
+    os.system("killall ngrok")
     url = ngrok.connect(25565, 'tcp')
     print('Your server address is ' + ((str(url).split('"')[1::2])[0]).replace('tcp://', ''))
     os.chdir("..")
