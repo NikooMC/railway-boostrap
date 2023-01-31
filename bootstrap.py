@@ -11,7 +11,7 @@ if __name__ == "__main__":
         pass
     engine.init(quiet=True)
     os.chdir("server")
-    # subprocess.run(["tar", "xf", "../snapshot.tar.xz"])
+    subprocess.run(["tar", "xf", "../snapshot.tar.xz"])
     engine.log.run_command_live_output("cat server/server.properties")
     engine.log.run_command_live_output(f"ngrok authtoken {os.environ['NGROK']}")
     os.system("killall ngrok")
